@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minecraft Guide Hub</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&amp;family=Nunito:wght@400;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .font-pixel {
+        font-family: "VT323", monospace;
+      }
+      .font-body {
+        font-family: "Nunito", sans-serif;
+      }
+      .minecraft-border {
+        box-shadow:
+          inset -4px -4px 0 0 #1a1a1a,
+          inset 4px 4px 0 0 #5a5a5a,
+          0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+      }
+      .grass-pattern {
+        background: linear-gradient(
+          180deg,
+          #4a7c23 0%,
+          #3d6b1e 50%,
+          #6b4423 50%,
+          #5a3a1d 100%
+        );
+      }
+      .creeper-face::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 10px,
+          rgba(0, 0, 0, 0.03) 10px,
+          rgba(0, 0, 0, 0.03) 20px
+        );
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .float-anim {
+        animation: float 3s ease-in-out infinite;
+      }
+      .category-badge {
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+      }
+    </style>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body class="h-full font-body bg-gray-900 text-gray-100 overflow-auto">
+    <div id="app-wrapper" class="w-full min-h-full">
+      <!-- Navigation -->
+      <nav class="bg-gray-800 border-b-4 border-green-600 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 grass-pattern rounded minecraft-border"
+              ></div>
+              <span id="nav-title" class="font-pixel text-3xl text-green-400"
+                >MINECRAFT GUIDE</span
+              >
+            </div>
+            <div class="hidden md:flex items-center gap-6">
+              <a
+                href="#seeds"
+                class="text-gray-300 hover:text-green-400 transition font-semibold"
+                >Seeds</a
+              >
+              <a
+                href="#commands"
+                class="text-gray-300 hover:text-green-400 transition font-semibold"
+                >Commands</a
+              >
+              <a
+                href="#guides"
+                class="text-gray-300 hover:text-green-400 transition font-semibold"
+                >Guides</a
+              >
+              <a
+                href="#tips"
+                class="text-gray-300 hover:text-green-400 transition font-semibold"
+                >Tips</a
+              >
+            </div>
+            <button
+              id="mobile-menu-btn"
+              class="md:hidden text-gray-300 hover:text-green-400"
+            >
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+          <!-- Mobile Menu -->
+          <div id="mobile-menu" class="hidden md:hidden mt-4 pb-2 space-y-2">
+            <a
+              href="#seeds"
+              class="block text-gray-300 hover:text-green-400 py-2"
+              >Seeds</a
+            >
+            <a
+              href="#commands"
+              class="block text-gray-300 hover:text-green-400 py-2"
+              >Commands</a
+            >
+            <a
+              href="#guides"
+              class="block text-gray-300 hover:text-green-400 py-2"
+              >Guides</a
+            >
+            <a
+              href="#tips"
+              class="block text-gray-300 hover:text-green-400 py-2"
+              >Tips</a
+            >
+          </div>
+        </div>
+      </nav>
+      <!-- Hero Section -->
+      <section
+        class="relative py-20 px-4 bg-gradient-to-br from-gray-800 via-gray-900 to-green-900 overflow-hidden"
+      >
+        <div class="absolute inset-0 opacity-10 creeper-face"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+          <div class="inline-block mb-6 float-anim">
+            <div
+              class="w-20 h-20 bg-green-500 rounded-lg minecraft-border mx-auto flex items-center justify-center"
+            >
+              <i data-lucide="pickaxe" class="w-10 h-10 text-gray-900"></i>
+            </div>
+          </div>
+          <h1
+            id="hero-heading"
+            class="font-pixel text-5xl md:text-7xl text-green-400 mb-4 tracking-wide"
+          >
+            MASTER MINECRAFT
+          </h1>
+          <p
+            id="hero-subtext"
+            class="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
+          >
+            Your ultimate resource for seeds, commands, tips, and comprehensive
+            guides to dominate the blocky world!
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="#articles"
+              class="bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-8 rounded minecraft-border transition"
+            >
+              Explore Guides
+            </a>
+            <a
+              href="#seeds"
+              class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded minecraft-border transition"
+            >
+              Best Seeds
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- Quick Stats -->
+      <section class="bg-gray-800 py-8 border-y-4 border-green-700">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div class="font-pixel text-4xl text-green-400">25+</div>
+              <div class="text-gray-400">Articles</div>
+            </div>
+            <div>
+              <div class="font-pixel text-4xl text-green-400">50+</div>
+              <div class="text-gray-400">Seeds</div>
+            </div>
+            <div>
+              <div class="font-pixel text-4xl text-green-400">100+</div>
+              <div class="text-gray-400">Commands</div>
+            </div>
+            <div>
+              <div class="font-pixel text-4xl text-green-400">∞</div>
+              <div class="text-gray-400">Adventure</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Articles Grid -->
+      <section id="articles" class="py-16 px-4 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="font-pixel text-4xl text-center text-green-400 mb-4">
+            ALL ARTICLES
+          </h2>
+          <p class="text-center text-gray-400 mb-8">
+            Browse our complete collection of Minecraft guides and tips
+          </p>
+          <!-- Filter Tabs -->
+          <div class="flex flex-wrap justify-center gap-2 mb-10">
+            <button
+              data-filter="all"
+              class="filter-btn active bg-green-600 text-white px-4 py-2 rounded font-semibold transition"
+            >
+              All
+            </button>
+            <button
+              data-filter="seeds"
+              class="filter-btn bg-gray-700 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded font-semibold transition"
+            >
+              Seeds
+            </button>
+            <button
+              data-filter="commands"
+              class="filter-btn bg-gray-700 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded font-semibold transition"
+            >
+              Commands
+            </button>
+            <button
+              data-filter="guides"
+              class="filter-btn bg-gray-700 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded font-semibold transition"
+            >
+              Guides
+            </button>
+            <button
+              data-filter="tips"
+              class="filter-btn bg-gray-700 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded font-semibold transition"
+            >
+              Tips
+            </button>
+          </div>
+          <!-- Articles Grid -->
+          <div
+            id="articles-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <!-- Articles will be rendered here -->
+          </div>
+        </div>
+      </section>
+      <!-- Feedback Section -->
+      <section id="feedback" class="py-16 px-4 bg-gray-900">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="font-pixel text-4xl text-center text-green-400 mb-4">
+            PLAYER FEEDBACK
+          </h2>
+          <p class="text-center text-gray-400 mb-10">
+            Share your thoughts and suggestions with the community
+          </p>
+          <!-- Feedback Form -->
+          <div class="bg-gray-800 rounded-lg minecraft-border p-6 md:p-8 mb-10">
+            <form id="feedback-form" class="space-y-4">
+              <div>
+                <label
+                  for="feedback-name"
+                  class="block text-green-400 font-semibold mb-2"
+                  >Your Name</label
+                >
+                <input
+                  type="text"
+                  id="feedback-name"
+                  placeholder="Enter your name..."
+                  class="w-full bg-gray-900 text-white border-2 border-gray-700 rounded px-4 py-2 focus:border-green-500 focus:outline-none transition"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="feedback-email"
+                  class="block text-green-400 font-semibold mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="feedback-email"
+                  placeholder="your@email.com"
+                  class="w-full bg-gray-900 text-white border-2 border-gray-700 rounded px-4 py-2 focus:border-green-500 focus:outline-none transition"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="feedback-message"
+                  class="block text-green-400 font-semibold mb-2"
+                  >Your Feedback</label
+                >
+                <textarea
+                  id="feedback-message"
+                  placeholder="Share your thoughts, suggestions, or bug reports..."
+                  class="w-full bg-gray-900 text-white border-2 border-gray-700 rounded px-4 py-2 focus:border-green-500 focus:outline-none transition h-32 resize-none"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                id="submit-feedback"
+                class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded minecraft-border transition"
+              >
+                Send Feedback
+              </button>
+              <div
+                id="feedback-status"
+                class="text-center text-sm text-gray-400"
+              ></div>
+            </form>
+          </div>
+          <!-- Comments Display -->
+          <div>
+            <h3 class="font-pixel text-2xl text-green-400 mb-6">
+              COMMUNITY COMMENTS
+            </h3>
+            <div id="comments-container" class="space-y-4">
+              <!-- Comments will be loaded here -->
+              <div class="text-center text-gray-400 py-8">
+                Loading comments...
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Featured Commands Section -->
+      <section id="commands" class="py-16 px-4 bg-gray-800">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="font-pixel text-4xl text-center text-green-400 mb-10">
+            ESSENTIAL COMMANDS
+          </h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-900 p-4 rounded minecraft-border">
+              <code class="text-green-400 font-mono">/gamemode creative</code>
+              <p class="text-gray-400 text-sm mt-2">
+                Switch to Creative mode for unlimited resources
+              </p>
+            </div>
+            <div class="bg-gray-900 p-4 rounded minecraft-border">
+              <code class="text-green-400 font-mono">/tp @p ~ ~ ~</code>
+              <p class="text-gray-400 text-sm mt-2">
+                Teleport to specific coordinates
+              </p>
+            </div>
+            <div class="bg-gray-900 p-4 rounded minecraft-border">
+              <code class="text-green-400 font-mono">/give @p diamond 64</code>
+              <p class="text-gray-400 text-sm mt-2">
+                Give yourself 64 diamonds instantly
+              </p>
+            </div>
+            <div class="bg-gray-900 p-4 rounded minecraft-border">
+              <code class="text-green-400 font-mono">/weather clear</code>
+              <p class="text-gray-400 text-sm mt-2">
+                Clear the weather for perfect visibility
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer class="bg-gray-800 border-t-4 border-green-700 py-10 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <div class="w-8 h-8 grass-pattern rounded"></div>
+            <span class="font-pixel text-2xl text-green-400"
+              >MINECRAFT GUIDE</span
+            >
+          </div>
+          <p class="text-gray-500 text-sm">
+            Your ultimate resource for mastering the blocky world
+          </p>
+          <p class="text-gray-600 text-xs mt-4">
+            Not affiliated with Mojang or Microsoft
+          </p>
+        </div>
+      </footer>
+    </div>
+    <!-- Article Modal -->
+    <div
+      id="article-modal"
+      class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4 overflow-auto"
+    >
+      <div
+        class="bg-gray-800 rounded-lg minecraft-border max-w-3xl w-full max-h-[90%] overflow-auto relative"
+      >
+        <button
+          id="close-modal"
+          class="absolute top-4 right-4 text-gray-400 hover:text-white"
+        >
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <div id="modal-content" class="p-6 md:p-8">
+          <!-- Content loaded dynamically -->
+        </div>
+      </div>
+    </div>
+    <script>
+      // Articles Data - 25 articles
+      const articles = [
+        // Seeds (7 articles)
+        {
+          id: 1,
+          category: "seeds",
+          title: "Best Survival Island Seeds 2024",
+          excerpt:
+            "Discover challenging island seeds perfect for hardcore survival gameplay.",
+          icon: "palmtree",
+          content:
+            "Island survival is one of the most challenging and rewarding ways to play Minecraft. These seeds spawn you on isolated islands with limited resources, forcing you to be creative and strategic. Try seed: 124014738 for a perfect survival island with nearby ocean monument!",
+        },
+        {
+          id: 2,
+          category: "seeds",
+          title: "Village at Spawn Seeds",
+          excerpt:
+            "Start your adventure right next to a fully populated village.",
+          icon: "home",
+          content:
+            "Villages provide essential early-game resources including beds, food, and trading opportunities. Seed: -1813745478 spawns you directly in a plains village with a blacksmith. Perfect for speedrunners and new players alike!",
+        },
+        {
+          id: 3,
+          category: "seeds",
+          title: "Rare Biome Cluster Seeds",
+          excerpt:
+            "Find seeds where multiple rare biomes meet in one location.",
+          icon: "mountain",
+          content:
+            "Some seeds generate incredible biome combinations. Seed: 5494213 features a jungle, mushroom island, and mesa biome all within 500 blocks of spawn. Perfect for builders wanting diverse resources!",
+        },
+        {
+          id: 4,
+          category: "seeds",
+          title: "Speedrun World Record Seeds",
+          excerpt: "The exact seeds used by speedrunning champions.",
+          icon: "timer",
+          content:
+            "Speedrunners use specific seeds for optimal fortress and stronghold locations. The current random seed record uses advanced portal mechanics, but set seed runs use carefully analyzed worlds for sub-10 minute completions.",
+        },
+        {
+          id: 5,
+          category: "seeds",
+          title: "Beautiful Mountain Seeds",
+          excerpt: "Stunning mountain ranges perfect for base building.",
+          icon: "mountain-snow",
+          content:
+            "The 1.18 terrain generation created breathtaking mountains. Seed: 8624896 features massive snow-capped peaks over Y=200, with caves and waterfalls throughout. Ideal for scenic builds!",
+        },
+        {
+          id: 6,
+          category: "seeds",
+          title: "Mansion Near Spawn Seeds",
+          excerpt: "Find woodland mansions within walking distance.",
+          icon: "castle",
+          content:
+            "Woodland mansions are rare structures with unique loot. Seed: 1844446717 has a mansion just 300 blocks from spawn in a dark oak forest. Great for early Totem of Undying!",
+        },
+        {
+          id: 7,
+          category: "seeds",
+          title: "Ancient City Seeds",
+          excerpt: "Locate the deep dark and ancient cities quickly.",
+          icon: "building",
+          content:
+            "Ancient cities contain unique sculk blocks and the powerful Swift Sneak enchantment. Seed: -7969402200478764: spawns you above a massive ancient city. Bring wool for silent movement!",
+        },
+
+        // Commands (6 articles)
+        {
+          id: 8,
+          category: "commands",
+          title: "Essential Admin Commands",
+          excerpt: "Must-know commands for server administrators.",
+          icon: "shield",
+          content:
+            "/op <player> - Grant operator status\n/ban <player> - Remove troublemakers\n/whitelist add <player> - Control access\n/difficulty hard - Set server difficulty\n/gamerule keepInventory true - Enable inventory preservation",
+        },
+        {
+          id: 9,
+          category: "commands",
+          title: "Teleportation Commands Guide",
+          excerpt: "Master all teleportation commands and variations.",
+          icon: "navigation",
+          content:
+            "/tp @p @e[type=villager,limit=1] - Teleport to nearest villager\n/tp @a ~ ~100 ~ - Teleport all players 100 blocks up\n/spreadplayers ~ ~ 50 100 false @a - Randomly spread players\nCoordinates can be relative (~) or absolute numbers.",
+        },
+        {
+          id: 10,
+          category: "commands",
+          title: "Entity Manipulation Commands",
+          excerpt: "Spawn, modify, and control any entity.",
+          icon: "ghost",
+          content:
+            "/summon minecraft:zombie ~ ~ ~ {IsBaby:1} - Spawn baby zombie\n/kill @e[type=!player] - Remove all non-player entities\n/data merge entity @e[type=pig,limit=1] {NoAI:1} - Freeze nearest pig\nCombine with NBT tags for complex spawns!",
+        },
+        {
+          id: 11,
+          category: "commands",
+          title: "World Edit Commands",
+          excerpt: "Transform your world with powerful edit commands.",
+          icon: "edit",
+          content:
+            "/fill ~-5 ~ ~-5 ~5 ~10 ~5 stone - Create stone cube\n/clone ~10 ~ ~ ~20 ~5 ~10 ~ ~ ~ - Clone structures\n/setblock ~ ~ ~ diamond_block - Place single block\nUse replace mode for selective filling!",
+        },
+        {
+          id: 12,
+          category: "commands",
+          title: "Particle & Effect Commands",
+          excerpt: "Create stunning visual effects with particles.",
+          icon: "sparkles",
+          content:
+            "/particle flame ~ ~1 ~ 0.5 0.5 0.5 0.1 100 - Fire burst\n/effect give @p minecraft:glowing 999999 1 true - Permanent glow\n/particle totem_of_undying ~ ~2 ~ 1 1 1 0.5 500 - Celebration\nCombine with command blocks for automation!",
+        },
+        {
+          id: 13,
+          category: "commands",
+          title: "Scoreboard & Teams",
+          excerpt: "Set up minigames with scoreboard systems.",
+          icon: "trophy",
+          content:
+            "/scoreboard objectives add kills playerKillCount\n/team add red\n/team modify red color red\n/team join red @p\nScoreboards enable complex game mechanics and tracking!",
+        },
+
+        // Guides (7 articles)
+        {
+          id: 14,
+          category: "guides",
+          title: "Complete Nether Guide",
+          excerpt: "Everything you need to know about the Nether dimension.",
+          icon: "flame",
+          content:
+            "The Nether contains unique biomes: Crimson Forest, Warped Forest, Soul Sand Valley, Basalt Deltas, and Nether Wastes. Bastions contain Piglin Brutes and amazing loot. Fortresses are essential for blaze rods. Always bring gold armor for Piglin safety!",
+        },
+        {
+          id: 15,
+          category: "guides",
+          title: "Enchanting Optimization",
+          excerpt: "Maximize your enchantment efficiency and combinations.",
+          icon: "wand",
+          content:
+            "Set up 15 bookshelves around your enchanting table for max level enchants. Use grindstone to remove unwanted enchants and gain XP. Combine books on anvil strategically - always put the more expensive item in the first slot!",
+        },
+        {
+          id: 16,
+          category: "guides",
+          title: "Villager Trading Hall Setup",
+          excerpt: "Create the ultimate trading system with villagers.",
+          icon: "users",
+          content:
+            "Cure zombie villagers for massive discounts (up to 80% off). Use lecterns to reset librarian trades until you get mending. Keep villagers in 1x1 spaces with beds for easy management. Hero of the Village further reduces prices!",
+        },
+        {
+          id: 17,
+          category: "guides",
+          title: "Redstone Basics to Advanced",
+          excerpt: "Learn redstone mechanics from simple to complex.",
+          icon: "zap",
+          content:
+            "Redstone signal travels 15 blocks maximum. Repeaters extend range and add delay. Comparators read container contents. T flip-flops convert buttons to levers. Piston doors, hidden staircases, and item sorters are essential builds!",
+        },
+        {
+          id: 18,
+          category: "guides",
+          title: "End Dimension Complete Guide",
+          excerpt: "Defeat the dragon and explore end cities.",
+          icon: "star",
+          content:
+            "Bring beds to damage the dragon quickly - they explode in the End! After defeating the dragon, find end gateways to outer islands. Elytra spawn in end ships near end cities. Shulkers drop shells for portable storage!",
+        },
+        {
+          id: 19,
+          category: "guides",
+          title: "Ocean Monument Raiding",
+          excerpt: "Conquer ocean monuments for sponges and gold.",
+          icon: "droplet",
+          content:
+            "Bring milk to counter Mining Fatigue from Elder Guardians. Doors create air pockets underwater. There are 3 Elder Guardians per monument. The treasure room contains 8 gold blocks. Sponges are found in sponge rooms!",
+        },
+        {
+          id: 20,
+          category: "guides",
+          title: "Mob Farm Designs",
+          excerpt: "Efficient mob farm designs for every purpose.",
+          icon: "bug",
+          content:
+            "General mob farms use dark rooms with water flushing. Spider-proof with buttons on floors. Enderman farms in the End are most efficient for XP. Wither skeleton farms require fortress manipulation. Creeper farms need cats!",
+        },
+
+        // Tips (5 articles)
+        {
+          id: 21,
+          category: "tips",
+          title: "Early Game Survival Tips",
+          excerpt: "Essential strategies for your first days.",
+          icon: "sunrise",
+          content:
+            "Day 1 priorities: wood, crafting table, wooden pickaxe, stone tools, shelter. Never dig straight down. Sheep provide easy bed materials. Caves provide coal and iron quickly. Always carry a water bucket for emergencies!",
+        },
+        {
+          id: 22,
+          category: "tips",
+          title: "Combat Pro Tips",
+          excerpt: "Master PvE and PvP combat mechanics.",
+          icon: "swords",
+          content:
+            "Wait for full attack cooldown for maximum damage. Shields block 100% of front attacks. Axes disable shields for 5 seconds. Sweeping edge hits multiple enemies. Critical hits require falling while attacking. Use terrain advantage!",
+        },
+        {
+          id: 23,
+          category: "tips",
+          title: "Building Techniques",
+          excerpt: "Professional building tips and tricks.",
+          icon: "ruler",
+          content:
+            "Depth is key - never make flat walls. Mix textures (stone brick + cracked + mossy). Use stairs and slabs for detail. Lighting affects mood dramatically. Build in odd numbers for natural symmetry. Add vegetation!",
+        },
+        {
+          id: 24,
+          category: "tips",
+          title: "Resource Gathering Efficiency",
+          excerpt: "Maximize your resource collection rate.",
+          icon: "hammer",
+          content:
+            "Fortune III on diamond ore gives average 2.2 diamonds per ore. Silk Touch grass blocks for decoration. Branch mine at Y=-59 for diamonds. Use TNT for ancient debris. Haste II beacon + Efficiency V = instant mining!",
+        },
+        {
+          id: 25,
+          category: "tips",
+          title: "Hidden Game Mechanics",
+          excerpt: "Little-known mechanics that change gameplay.",
+          icon: "lightbulb",
+          content:
+            "Foxes can carry items - including totems that work for them! Boats prevent fall damage. Honey blocks reduce fall damage by 80%. Snow layers slow mobs. Composters convert plants to bone meal. Name tags prevent despawning!",
+        },
+      ];
+
+      const categoryColors = {
+        seeds: { bg: "bg-emerald-600", text: "text-emerald-400" },
+        commands: { bg: "bg-amber-600", text: "text-amber-400" },
+        guides: { bg: "bg-blue-600", text: "text-blue-400" },
+        tips: { bg: "bg-purple-600", text: "text-purple-400" },
+      };
+
+      const defaultConfig = {
+        site_title: "MINECRAFT GUIDE",
+        hero_heading: "MASTER MINECRAFT",
+        hero_subtext:
+          "Your ultimate resource for seeds, commands, tips, and comprehensive guides to dominate the blocky world!",
+        primary_color: "#22c55e",
+        secondary_color: "#1f2937",
+        text_color: "#f3f4f6",
+        accent_color: "#16a34a",
+        surface_color: "#374151",
+        font_family: "Nunito",
+        font_size: 16,
+      };
+
+      let config = { ...defaultConfig };
+
+      function renderArticles(filter = "all") {
+        const grid = document.getElementById("articles-grid");
+        const filtered =
+          filter === "all"
+            ? articles
+            : articles.filter((a) => a.category === filter);
+
+        grid.innerHTML = filtered
+          .map((article) => {
+            const colors = categoryColors[article.category];
+            return `
+          <article class="bg-gray-800 rounded-lg overflow-hidden minecraft-border card-hover transition-all duration-300 cursor-pointer article-card" data-id="${article.id}">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="${colors.bg} w-10 h-10 rounded flex items-center justify-center">
+                  <i data-lucide="${article.icon}" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="category-badge ${colors.bg} text-white text-xs font-bold px-2 py-1 rounded uppercase">
+                  ${article.category}
+                </span>
+              </div>
+              <h3 class="font-bold text-lg text-white mb-2 hover:text-green-400 transition">${article.title}</h3>
+              <p class="text-gray-400 text-sm">${article.excerpt}</p>
+              <div class="mt-4 flex items-center text-green-400 text-sm font-semibold">
+                Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+              </div>
+            </div>
+          </article>
+        `;
+          })
+          .join("");
+
+        lucide.createIcons();
+        attachArticleListeners();
+      }
+
+      function attachArticleListeners() {
+        document.querySelectorAll(".article-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            const id = parseInt(card.dataset.id);
+            openArticle(id);
+          });
+        });
+      }
+
+      function openArticle(id) {
+        const article = articles.find((a) => a.id === id);
+        if (!article) return;
+
+        const colors = categoryColors[article.category];
+        const modal = document.getElementById("article-modal");
+        const content = document.getElementById("modal-content");
+
+        content.innerHTML = `
+        <div class="flex items-center gap-3 mb-6">
+          <div class="${colors.bg} w-12 h-12 rounded flex items-center justify-center">
+            <i data-lucide="${article.icon}" class="w-6 h-6 text-white"></i>
+          </div>
+          <span class="category-badge ${colors.bg} text-white text-sm font-bold px-3 py-1 rounded uppercase">
+            ${article.category}
+          </span>
+        </div>
+        <h2 class="font-pixel text-3xl text-green-400 mb-4">${article.title}</h2>
+        <p class="text-gray-300 mb-6">${article.excerpt}</p>
+        <div class="bg-gray-900 rounded p-4 minecraft-border">
+          <p class="text-gray-200 whitespace-pre-line leading-relaxed">${article.content}</p>
+        </div>
+        <button class="mt-6 bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded transition" onclick="closeModal()">
+          Back to Articles
+        </button>
+      `;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        lucide.createIcons();
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("article-modal");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+
+      // Filter functionality
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".filter-btn").forEach((b) => {
+            b.classList.remove("bg-green-600", "text-white");
+            b.classList.add("bg-gray-700", "text-gray-300");
+          });
+          btn.classList.remove("bg-gray-700", "text-gray-300");
+          btn.classList.add("bg-green-600", "text-white");
+          renderArticles(btn.dataset.filter);
+        });
+      });
+
+      // Mobile menu
+      document
+        .getElementById("mobile-menu-btn")
+        .addEventListener("click", () => {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("hidden");
+        });
+
+      // Close modal
+      document
+        .getElementById("close-modal")
+        .addEventListener("click", closeModal);
+      document
+        .getElementById("article-modal")
+        .addEventListener("click", (e) => {
+          if (e.target.id === "article-modal") closeModal();
+        });
+
+      // Element SDK
+      async function onConfigChange(cfg) {
+        document.getElementById("nav-title").textContent =
+          cfg.site_title || defaultConfig.site_title;
+        document.getElementById("hero-heading").textContent =
+          cfg.hero_heading || defaultConfig.hero_heading;
+        document.getElementById("hero-subtext").textContent =
+          cfg.hero_subtext || defaultConfig.hero_subtext;
+
+        const primary = cfg.primary_color || defaultConfig.primary_color;
+        const secondary = cfg.secondary_color || defaultConfig.secondary_color;
+        const textColor = cfg.text_color || defaultConfig.text_color;
+        const accent = cfg.accent_color || defaultConfig.accent_color;
+        const surface = cfg.surface_color || defaultConfig.surface_color;
+
+        document.documentElement.style.setProperty("--primary", primary);
+        document.documentElement.style.setProperty("--secondary", secondary);
+
+        const font = cfg.font_family || defaultConfig.font_family;
+        const fontSize = cfg.font_size || defaultConfig.font_size;
+        document.body.style.fontFamily = `${font}, Nunito, sans-serif`;
+        document.body.style.fontSize = `${fontSize}px`;
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities: (cfg) => ({
+            recolorables: [
+              {
+                get: () => cfg.secondary_color || defaultConfig.secondary_color,
+                set: (v) => {
+                  cfg.secondary_color = v;
+                  window.elementSdk.setConfig({ secondary_color: v });
+                },
+              },
+              {
+                get: () => cfg.surface_color || defaultConfig.surface_color,
+                set: (v) => {
+                  cfg.surface_color = v;
+                  window.elementSdk.setConfig({ surface_color: v });
+                },
+              },
+              {
+                get: () => cfg.text_color || defaultConfig.text_color,
+                set: (v) => {
+                  cfg.text_color = v;
+                  window.elementSdk.setConfig({ text_color: v });
+                },
+              },
+              {
+                get: () => cfg.primary_color || defaultConfig.primary_color,
+                set: (v) => {
+                  cfg.primary_color = v;
+                  window.elementSdk.setConfig({ primary_color: v });
+                },
+              },
+              {
+                get: () => cfg.accent_color || defaultConfig.accent_color,
+                set: (v) => {
+                  cfg.accent_color = v;
+                  window.elementSdk.setConfig({ accent_color: v });
+                },
+              },
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => cfg.font_family || defaultConfig.font_family,
+              set: (v) => {
+                cfg.font_family = v;
+                window.elementSdk.setConfig({ font_family: v });
+              },
+            },
+            fontSizeable: {
+              get: () => cfg.font_size || defaultConfig.font_size,
+              set: (v) => {
+                cfg.font_size = v;
+                window.elementSdk.setConfig({ font_size: v });
+              },
+            },
+          }),
+          mapToEditPanelValues: (cfg) =>
+            new Map([
+              ["site_title", cfg.site_title || defaultConfig.site_title],
+              ["hero_heading", cfg.hero_heading || defaultConfig.hero_heading],
+              ["hero_subtext", cfg.hero_subtext || defaultConfig.hero_subtext],
+            ]),
+        });
+      }
+
+      // Initialize
+      renderArticles();
+      lucide.createIcons();
+
+      // Data SDK Handler for feedback/comments
+      let allComments = [];
+
+      const feedbackHandler = {
+        onDataChanged(data) {
+          allComments = data;
+          renderComments();
+        },
+      };
+
+      // Initialize Data SDK
+      async function initDataSDK() {
+        const result = await window.dataSdk.init(feedbackHandler);
+        if (result.isOk) {
+          console.log("Data SDK initialized successfully");
+        } else {
+          console.error("Failed to initialize Data SDK");
+        }
+      }
+
+      // Render comments
+      function renderComments() {
+        const container = document.getElementById("comments-container");
+
+        if (allComments.length === 0) {
+          container.innerHTML =
+            '<div class="text-center text-gray-400 py-8">No feedback yet. Be the first to comment!</div>';
+          return;
+        }
+
+        container.innerHTML = allComments
+          .map(
+            (comment) => `
+        <div class="bg-gray-800 rounded-lg minecraft-border p-4 border-l-4 border-green-500">
+          <div class="flex items-start justify-between mb-2">
+            <div>
+              <h4 class="font-bold text-green-400">${escapeHtml(comment.name)}</h4>
+              <p class="text-xs text-gray-500">${new Date(comment.createdAt).toLocaleDateString()}</p>
+            </div>
+          </div>
+          <p class="text-gray-300 text-sm">${escapeHtml(comment.message)}</p>
+        </div>
+      `,
+          )
+          .join("");
+      }
+
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      // Handle feedback form submission
+      document
+        .getElementById("feedback-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("feedback-name").value.trim();
+          const email = document.getElementById("feedback-email").value.trim();
+          const message = document
+            .getElementById("feedback-message")
+            .value.trim();
+          const statusDiv = document.getElementById("feedback-status");
+          const submitBtn = document.getElementById("submit-feedback");
+
+          if (!name || !email || !message) {
+            statusDiv.innerHTML =
+              '<span class="text-red-400">Please fill in all fields</span>';
+            return;
+          }
+
+          // Show loading state
+          submitBtn.disabled = true;
+          submitBtn.classList.add("opacity-50");
+          statusDiv.innerHTML =
+            '<span class="text-gray-300">Sending feedback...</span>';
+
+          // Create feedback record
+          const result = await window.dataSdk.create({
+            name,
+            email,
+            message,
+            createdAt: new Date().toISOString(),
+          });
+
+          if (result.isOk) {
+            statusDiv.innerHTML =
+              '<span class="text-green-400">✓ Thank you for your feedback!</span>';
+            document.getElementById("feedback-form").reset();
+            setTimeout(() => {
+              statusDiv.innerHTML = "";
+            }, 3000);
+          } else {
+            statusDiv.innerHTML =
+              '<span class="text-red-400">Error sending feedback. Please try again.</span>';
+          }
+
+          // Reset button state
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("opacity-50");
+        });
+
+      // Initialize Data SDK
+      initDataSDK();
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9dca02fd4497d7dc',t:'MTc3MzU2MTkxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
